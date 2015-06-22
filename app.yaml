@@ -1,0 +1,33 @@
+application: luantheguyen
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: .*/js
+  static_dir: js
+
+- url: .*/css
+  static_dir: css
+  
+- url: .*/img
+  static_dir: img
+  
+- url: .*/compiled
+  static_dir: compiled
+
+- url: /.*
+  script: blog.app
+
+mime_type: templates/web.config
+
+libraries:
+- name: jinja2
+  version: latest
+
+- name: PIL
+  version: "1.1.7"

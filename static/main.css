@@ -1,0 +1,151 @@
+body {
+    position: relative;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    color: #333;
+}
+
+.login-area {
+    font-size: 13px;
+    color: gray;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+}
+
+.login-link {
+    color: gray;
+    text-decoration: none;
+}
+
+.login-link:visited {
+    color: gray;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+.edit-link {
+    color: gray;
+
+}
+.history-link {
+    color: gray;
+
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+}
+
+label {
+  display: block;
+  font-size: 25px;
+}
+
+label + label {
+    margin-top: 20px;
+}
+
+input[type=text] {
+    width: 200px;
+    font-size: 20px;
+    padding: 2px;
+    font-family: monospace;
+}
+input[type=password] {
+    width: 200px;
+    font-size: 20px;
+    padding: 2px;
+    font-family: monospace;
+}
+select theme{
+	position: absolute;
+    top: 200px;
+    right: 50px;
+}
+textarea {
+  width: 900px;
+  height: 600px;
+  font-size: 17px;
+  margin-top: 50px;
+  font-family: monospace;
+}
+
+input[type=submit] {
+  font-size: 24px;
+}
+
+#head1{
+	text-align:Center;
+	font-size: 40px;
+}
+h1 {
+text-align:center;
+font-size:40px;
+
+}
+#content_wiki{
+    position: absolute;
+    margin-top: 100px;
+
+}
+#content{
+    margin-top: 100px;
+}
+.main-title {
+    display: block;
+    color: #222;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-decoration: none;
+}
+
+.post + .post {
+    margin-top: 15px;
+}
+
+.post-heading {
+    position: relative;
+    border-bottom: 3px solid #666;
+}
+#login-query{
+	width:200px;
+	height:100px;
+    position: absolute;
+	color:#444;
+    top: 10px;
+    right: 50px;
+}
+
+#editor{
+	margin-top: 30px;
+	width: 600px;
+	height: 500px;
+}
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.post-date {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    color: #999;
+
+}
+.post-content {
+    margin-top: 50px;
+}
+

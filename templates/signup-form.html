@@ -1,0 +1,113 @@
+{% extends "wiki-base.html" %}
+{% block content %}
+<!--
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Sign Up</title>
+    <style type="text/css">
+      .label {text-align: right}
+      .error {color: red}
+    </style>
+
+  </head>
+
+  <body>
+    <h2>Signup</h2>
+    <form method="post">
+      <table>
+        <tr>
+          <td class="label">
+            Username
+          </td>
+          <td>
+            <input type="text" name="username" value="{{username}}">
+          </td>
+          <td class="error">
+            {{error_username}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Password
+          </td>
+          <td>
+            <input type="password" name="password" value="">
+          </td>
+          <td class="error">
+            {{error_password}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Verify Password
+          </td>
+          <td>
+            <input type="password" name="verify" value="">
+          </td>
+          <td class="error">
+            {{error_verify}}
+          </td>
+        </tr>
+
+        <tr>
+          <td class="label">
+            Email (optional)
+          </td>
+          <td>
+            <input type="text" name="email" value="{{email}}">
+          </td>
+          <td class="error">
+            {{error_email}}
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit">
+    </form>
+  </body>
+-->
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="static/register-style.css" />
+</head>
+<body>
+<div class="register-container" id="register-content" >
+		<form method="post">
+			<h1>Register Form</h1>
+			<div>
+				<input type="text" placeholder="username" name = "username" value="{{username}}" required="" id="username" />
+			</div>
+			<div>
+				<input type="password" name="password" value="" placeholder="Password" required="" id="password" />
+			</div>
+			<div>
+				<input type="password" name="verify" value="" placeholder="Password" required="" id="verify" />				
+			</div>
+			<div>
+				<input type="text" placeholder="Email" name = "Email" value = "{{emai}}"id="email"/>
+			</div>
+			<div class="error">
+			{{error_username}} <br>
+			{{error_password}} <br>
+			{{error_verify}}<br>
+			{{error_email}}
+
+			 </div>
+			<div>
+				<input type="submit" value="register" />
+			</div>
+		</form><!-- form -->
+</div><!-- container -->
+</body>
+</html>
+{% endblock %}

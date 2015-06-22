@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <title>My Wiki Blog</title>
+</head>
+<script type="text/javascript" src="/js/dat.gui.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<body>
+
+  <a href="/wiki" class="main-title">
+    My Wiki
+  </a>
+
+  <div class="login-area">
+    {% if user %}
+      {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+					(<a class ="edit-link" href="/_edit/"{{post_id}}>edit</a>)
+    {% else %}
+      <a class="login-link" href="/login">login</a>
+      |
+      <a class="login-link" href="/signup">signup</a>
+    {% endif %}
+  </div>
+
+  <div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+</body>
+
+<div class = "QUERIED ">
+    <div style="text-align:right "; "font-size:30px"; "font-family: arial";>Queried {{queried}} seconds ago</div>
+</div>
+</html>
+

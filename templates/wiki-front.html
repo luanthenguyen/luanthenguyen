@@ -1,0 +1,26 @@
+{% extends "wiki-base.html" %}
+
+{% block content %}
+<img src="static/front.png" alt="Welcome To Wiki" style="position: absolute; top: 20x;  opacity:0.4;filter:alpha(opacity=40);"/>
+
+<div class = "background"></div>
+<div id = "head1">
+<h1 > Welcome To Wiki</h1>
+<br>
+<br>
+newest post
+</div> 
+
+<div id = "content_wiki">
+{%for p in posts%}
+    <a href = {{p.link}} style ="font-size: 30px;">title :{{p.title}} </a>
+    <br><br>
+	<br>{{p.content[:200]}}
+	<br><br>
+	<hr />
+
+<div id="line1" class="line vertical" style = "background-color: #000000;"></div>
+
+{%endfor%}
+</div>
+{% endblock %}

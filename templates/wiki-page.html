@@ -1,0 +1,44 @@
+{% extends "wiki-base.html" %}
+
+{% block content %}
+    <!-- Core -->
+    <script src="compiled/base.js"></script>
+    <script src="compiled/math/Random.js"></script>
+    <script src="compiled/math/Vector.js"></script>
+    <!-- Integrators -->
+    <script src="compiled/engine/integrator/Integrator.js"></script>
+    <script src="compiled/engine/integrator/Euler.js"></script>
+    <script src="compiled/engine/integrator/ImprovedEuler.js"></script>
+    <script src="compiled/engine/integrator/Verlet.js"></script>
+    <!-- Engine -->
+    <script src="compiled/engine/Particle.js"></script>
+    <script src="compiled/engine/Physics.js"></script>
+    <script src="compiled/engine/Spring.js"></script>
+    <!-- Behaviours -->
+    <script src="compiled/behaviour/Behaviour.js"></script>
+    <script src="compiled/behaviour/Attraction.js"></script>
+    <script src="compiled/behaviour/Collision.js"></script>
+    <script src="compiled/behaviour/ConstantForce.js"></script>
+    <script src="compiled/behaviour/EdgeBounce.js"></script>
+    <script src="compiled/behaviour/EdgeWrap.js"></script>
+    <script src="compiled/behaviour/Wander.js"></script>
+    <!-- Demo Renderers -->
+    <script src="compiled/demos/renderer/Renderer.js"></script>
+    <script src="compiled/demos/renderer/CanvasRenderer.js"></script>
+    <script src="compiled/demos/renderer/WebGLRenderer.js"></script>
+    <script src="compiled/demos/renderer/DOMRenderer.js"></script>
+    <!-- Demos -->
+    <script src="compiled/demos/Demo.js"></script>
+    <script src="compiled/demos/AttractionDemo.js"></script>
+    <script src="compiled/demos/BalloonDemo.js"></script>
+    <script src="compiled/demos/BoundsDemo.js"></script>
+    <script src="compiled/demos/ClothDemo.js"></script>
+    <script src="compiled/demos/ChainDemo.js"></script>
+    <script src="compiled/demos/CollisionDemo.js"></script>
+	<!--<script src="/js/jquery-1.10.2.min.js"></script>-->
+	<script src="/js/sketch.min.js"></script>
+<div class = "content">
+{{content | safe}}
+</div> 
+
+{% endblock %}

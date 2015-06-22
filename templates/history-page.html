@@ -1,0 +1,23 @@
+{% extends "wiki-base.html" %}
+
+{% block content %}
+
+    <table>
+    {% for p in pages %}
+        <tr>
+            <td>{{p.content[:100]}}</td>
+			<td>         </td>
+            <td><a href="{{p.link}}?v={{p.key().id() | safe }}">view</a></td>
+			<td>         </td>
+            <td><a href="/_edit{{p.link}}?v={{p.key().id() | safe }}">edit</a></td>
+			<td>         </td>
+            <td><font color="red">{{p.last_modified.strftime("%a, %d %b %Y %H:%M:%S")}}</font></td>
+			<td>by {{p.creater}}</td>
+        </tr>
+		<br>
+		<tr>
+		</tr>
+{% endfor %}
+    </table>
+
+{% endblock %}

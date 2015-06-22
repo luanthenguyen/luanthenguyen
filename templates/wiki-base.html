@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+	<script src="/js/dat.gui.js"></script>
+    <!-- Libraries -->
+	    <script src="compiled/base.js"></script>
+    <script src="compiled/math/Random.js"></script>
+    <script src="compiled/math/Vector.js"></script>
+    <!-- Integrators -->
+    <script src="compiled/engine/integrator/Integrator.js"></script>
+    <script src="compiled/engine/integrator/Euler.js"></script>
+    <script src="compiled/engine/integrator/ImprovedEuler.js"></script>
+    <script src="compiled/engine/integrator/Verlet.js"></script>
+    <!-- Engine -->
+    <script src="compiled/engine/Particle.js"></script>
+    <script src="compiled/engine/Physics.js"></script>
+    <script src="compiled/engine/Spring.js"></script>
+    <!-- Behaviours -->
+    <script src="compiled/behaviour/Behaviour.js"></script>
+    <script src="compiled/behaviour/Attraction.js"></script>
+    <script src="compiled/behaviour/Collision.js"></script>
+    <script src="compiled/behaviour/ConstantForce.js"></script>
+    <script src="compiled/behaviour/EdgeBounce.js"></script>
+    <script src="compiled/behaviour/EdgeWrap.js"></script>
+    <script src="compiled/behaviour/Wander.js"></script>
+    <!-- Demo Renderers -->
+    <script src="compiled/demos/renderer/Renderer.js"></script>
+    <script src="compiled/demos/renderer/CanvasRenderer.js"></script>
+    <script src="compiled/demos/renderer/WebGLRenderer.js"></script>
+    <script src="compiled/demos/renderer/DOMRenderer.js"></script>
+    <!-- Demos -->
+    <script src="compiled/demos/Demo.js"></script>
+    <script src="compiled/demos/AttractionDemo.js"></script>
+    <script src="compiled/demos/BalloonDemo.js"></script>
+    <script src="compiled/demos/BoundsDemo.js"></script>
+    <script src="compiled/demos/ClothDemo.js"></script>
+    <script src="compiled/demos/ChainDemo.js"></script>
+    <script src="compiled/demos/CollisionDemo.js"></script>
+	<!--<script src="/js/jquery-1.10.2.min.js"></script>-->
+	<script src="/js/sketch.min.js"></script>
+    <script src="http://cdn.iamwebdeveloper.in/js/stats.js/r11/Stats.js"></script>
+</head>
+
+<body id ='body'>
+<script>
+var coffee = function(){
+	  this.coffeeexam = false;
+	  this.background = false;
+};
+var cf = new coffee;
+window.onload = function() {
+  var gui = new dat.GUI();
+  gui.add(cf ,'coffeeexam').onFinishChange(function(){
+    // refresh based on the new value of params.interation
+    window.location.href = '/ER';
+});
+  gui.add(cf,'background').onFinishChange(function(){
+  	// Create a physics instance which uses the Verlet integration method
+	var physics = new Physics();
+	physics.integrator = new Verlet();
+
+	// Design some behaviours for particles
+	var avoidMouse = new Attraction();
+	var pullToCenter = new Attraction();
+
+	// Allow particle collisions to make things interesting
+	var collision = new Collision();
+
+	// Use Sketch.js to make life much easier
+	var example = Sketch.create({ container: document.body });
+
+	example.setup = function() {
+
+		for ( var i = 0; i < 200; i++ ) {
+
+			// Create a particle
+			var particle = new Particle( Math.random() );
+			var position = new Vector( random( this.width ), random( this.height ) );
+			particle.setRadius( particle.mass * 10 );
+			particle.moveTo( position );
+
+			// Make it collidable
+			collision.pool.push( particle );
+
+			// Apply behaviours
+			particle.behaviours.push( avoidMouse, pullToCenter, collision );
+
+			// Add to the simulation
+			physics.particles.push( particle );
+		}
+
+		pullToCenter.target.x = this.width / 2;
+		pullToCenter.target.y = this.height / 2;
+		pullToCenter.strength = 120;
+
+		avoidMouse.setRadius( 60 );
+		avoidMouse.strength = -1000;
+
+		example.fillStyle = '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+	}
+
+	example.draw = function() {
+
+		// Step the simulation
+		physics.step();
+
+		// Render particles
+		for ( var i = 0, n = physics.particles.length; i < n; i++ ) {
+
+			var particle = physics.particles[i];
+			example.beginPath();
+			example.arc( particle.pos.x, particle.pos.y, particle.radius, 0, Math.PI * 2 );
+			example.fill();
+		}
+	}
+
+	example.mousemove = function() {
+		avoidMouse.target.x = example.mouse.x;
+		avoidMouse.target.y = example.mouse.y;
+	}
+	  });
+	};
+
+</script>
+  <div class="login-area">
+    {% if user %}
+      {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+	    <div id = "login-query">
+			
+		</div>
+	           {%if hide != True%}
+					(<a class ="edit-link" href="/_edit{{edit_link}}">edit</a>)
+					(<a class ="history-link" href="/_history{{edit_link}}">history</a>)
+                {%endif%}
+    {% else %}
+      <a class="login-link" href="/login">login</a>
+      |
+      <a class="login-link" href="/signup">signup</a>
+    {% endif %}
+  </div>
+
+
+  <div id="content">
+  {% block content %}
+  {% endblock %}
+  </div>
+
+</body>
+<div class = "QUERIED ">
+    <div style="text-align:right;  font-size:15px; font-family: arial;">Last edit by {{creater}}</div>
+</div>
+</html>
+
